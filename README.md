@@ -38,7 +38,7 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
 
 4. **Run the backend server:**
    ```bash
-   cd server
+   cd backend
    npm install
    npm run dev
    ```
