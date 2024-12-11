@@ -22,7 +22,7 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/chatio.git
+   git clone https://github.com/Priyabr4t/Chat.io.git
    cd chatio
    ```
 
