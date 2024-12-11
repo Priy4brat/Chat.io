@@ -22,7 +22,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 // app.use(express.json()) // it will parse the incoming requests with JSON data
 app.use(cookieParser()) // it will parse the incoming requests with cookies
 app.use("/api/auth", authRoutes) // it will trigger to the routes folder 
-app.use("/api/auth", messageRoutes)
+app.use("/api/messages", messageRoutes)
 
 app.listen(PORT,()=>{
     console.log(`server is running at http://localhost:${PORT}`); 

@@ -10,6 +10,7 @@ export const useAuthStore = create((set) => ({
     isLoggingIn: false, // to show loading spinner
     isUpdatingProfile: false, // to show loading spinner
     isCheckingAuth: true, // to show loading spinner
+    onlineUsers: [], // to store the online users
 
     checkAuth: async () => { // to check if the user is already logged in
         try {
