@@ -15,14 +15,14 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
 
 - **Frontend**: React.js with Tailwind CSS for a sleek and intuitive user interface.
 - **Backend**: Node.js/Express for scalable server-side logic.
-- **Database**: MongoDB or Firebase for real-time data storage and retrieval.
+- **Database**: MongoDB for real-time data storage and retrieval.
 - **Real-Time Communication**: Socket.io for live, bidirectional communication between users.
 
 ## Installation and Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Priyabr4t/Chat.io.git
+   git clone https://github.com/Priy4brat/Chat.io.git
    cd chatio
    ```
 
@@ -45,10 +45,24 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
 
 5. **Environment Variables:**
    Create a `.env` file in the root directory and add the following variables:
-   ```env
-   REACT_APP_API_URL=http://localhost:5002/api
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_secret_key
+   ```plaintext
+   # MongoDB Configuration
+   MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/chat_db?retryWrites=true&w=majority&appName=Cluster0
+   MONGODB_PASS=<password>
+
+   # Server Configuration
+   PORT=5002
+
+   # JWT Secret Key
+   JWT_SECRET=mysecretkey
+
+   # Environment Mode
+   NODE_ENV=development
+
+   # Cloudinary Configuration
+   CLOUDINARY_CLOUD_NAME=your-cloud-name
+   CLOUDINARY_API_KEY=your-api-key
+   CLOUDINARY_API_SECRET=your-api-secret
    ```
 
 ## Usage
