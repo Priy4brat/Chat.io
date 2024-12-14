@@ -1,5 +1,6 @@
-import User from "../models/user.model.js"
-import cloudinary from "../lib/cloudinary.js"
+import User from "../models/user.model.js";
+import Message from "../models/message.model.js";
+import cloudinary from "../lib/cloudinary.js";
 export const getUsersForSidebar = async (req, res) => {
     try {
         const loggedInUser = req.user._id
@@ -33,29 +34,44 @@ export const getMessages = async (req, res) => {
     }
 }
 
-export const sendMessage = async(req, res) => {
+export const sendMessage = async (req, res) => {
     try {
-        const {text, image} = req.params
-        const {id:receiverId} = req.params
-        const senderId = req.user._id
+       // Extracting receiverId from URL parameters (req.params)
+       const { id:receiverId } = req.params;  // receiverId comes from URL
 
-        let imageUrl
-        if(image){
-            const uploadResponse = await cloudinary.uploader.upload(image)
-            imageUrl = uploadResponse.secure_url 
+       // Extract text and image from req.body (data in request body)
+       const { text, image } = req.body;
+
+    //    console.log('Receiver ID:', receiverId);
+    //    console.log('Message Text:', text);
+    //    console.log('Message Image:', image);
+
+        // Ensure receiverId is present
+        if (!receiverId) {
+            return res.status(400).json({ error: "Receiver ID is required" });
         }
 
-        const newMessages = new Message({
+        const senderId = req.user._id;
+
+        // Handle image upload if it exists
+        let imageUrl = null;
+        if (image) {
+            const uploadResponse = await cloudinary.uploader.upload(image);
+            imageUrl = uploadResponse.secure_url;
+        }
+
+        // Create a new message
+        const newMessage = new Message({
             senderId,
             receiverId,
-            text, 
-            image: imageUrl
-        })
+            text,
+            image: imageUrl,
+        });
 
-        await newMessages.save()
+        await newMessage.save()
         //  TODO - > realtime functionalities goes here
 
-        res.status(201).json(newMessages)
+        res.status(201).json(newMessage)
 
 
 
