@@ -1,21 +1,27 @@
 import { create } from "zustand"
 import { axiosInstance } from "../lib/axios"
 import toast from "react-hot-toast"
-import axios from "axios"
+import {io} from "socket.io-client"
+
+const BASE_URL = "http://localhost:5002"
 
 
-export const useAuthStore = create((set) => ({
+export const useAuthStore = create((set, get) => ({
     authUser: null, // to store the user data
     isSigningUp: false, // to show loading spinner
     isLoggingIn: false, // to show loading spinner
     isUpdatingProfile: false, // to show loading spinner
     isCheckingAuth: true, // to show loading spinner
     onlineUsers: [], // to store the online users
+    socket: null,
+    
 
     checkAuth: async () => { // to check if the user is already logged in
         try {
             const res = await axiosInstance.get("/auth/check") // to send the checkAuth request to the server
             set({ authUser: res.data }) // to set the authUser state to the response data
+
+            get().connectSocket()
         } catch (error) {
             console.log("Error in checkAuth : ", error);
             set({ authUser: null })
@@ -31,6 +37,8 @@ export const useAuthStore = create((set) => ({
             const res = await axiosInstance.post("/auth/signup", data) // to send the signup request to the server
             set({ authUser: res.data }) // to set the authUser state to the response data
             toast.success("Account created successfully")
+
+            get().connectSocket()
         } catch (error) {
             toast.error(error.response.data.message) // to show error message
         }
@@ -45,6 +53,7 @@ export const useAuthStore = create((set) => ({
             await axiosInstance.post("/auth/logout") // to send the logout request to the server
             set({ authUser: null }) // to set the authUser state to null
             toast.success("Logged out successfully")
+            get().disconnectSocket() 
 
         } catch (error) {
             toast.error(error.response.data.message) // to show error message
@@ -58,6 +67,8 @@ export const useAuthStore = create((set) => ({
             const res = await axiosInstance.post("/auth/login", data) // to send the login request to the server
             set({ authUser: res.data }) // to set the authUser state to the response data
             toast.success("Account logged in successfully")
+
+            get().connectSocket()
         } catch (error) {
             toast.error(error.response.data.message) // to show error message
         }
@@ -84,6 +95,19 @@ export const useAuthStore = create((set) => ({
         }
 
 
-    }
+    },
+
+    connectSocket: () => {
+        const {authUser} = get()
+        if(!authUser || get().socket?.connected) return // user is not authenticated or user is already connected
+
+        const socket = io(BASE_URL)
+        socket.connect()
+        set({socket: socket})
+    },
+    disconnectSocket: () => {
+        if(get().socket?.connected) get().socket.disconnect() 
+    },
+
 
 }))
