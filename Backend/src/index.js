@@ -8,10 +8,11 @@ import cors from "cors";
 import { app, server } from "./lib/socket.js";
 
 import path from "path";
+const __dirname = path.resolve();
 
 dotenv.config(); // it will load the .env file into the process.env object
 const PORT = process.env.PORT || 5001;
-// const __dirname = path.resolve();
+
 
 app.use(
   cors({
@@ -26,13 +27,13 @@ app.use(cookieParser()); // it will parse the incoming requests with cookies
 app.use("/api/auth", authRoutes); // it will trigger to the routes folder
 app.use("/api/messages", messageRoutes);
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "../Frontend","dist", "index.html"))
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Frontend","dist", "index.html"))
+  });
+}
 
 server.listen(PORT, () => {
   console.log(`server is running at http://localhost:${PORT}`);
