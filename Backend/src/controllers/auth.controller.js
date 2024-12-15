@@ -3,7 +3,7 @@ import { generateToken } from "../lib/utils.js"
 import User from "../models/user.model.js"
 import bcrypt from "bcryptjs"
 export const signup = async (req,res) => {
-    console.log("Request body:", req.body); 
+    // console.log("Request body:", req.body); 
     const {fullName, email, password } = req.body
 
     try {

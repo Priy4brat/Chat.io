@@ -5,8 +5,9 @@ import dotenv from "dotenv"
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import { app , server} from "./lib/socket.js";
 
-const app = express()
+
 dotenv.config() // it will load the .env file into the process.env object
 const PORT = process.env.PORT || 5002
 
@@ -24,7 +25,7 @@ app.use(cookieParser()) // it will parse the incoming requests with cookies
 app.use("/api/auth", authRoutes) // it will trigger to the routes folder 
 app.use("/api/messages", messageRoutes)
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     console.log(`server is running at http://localhost:${PORT}`); 
     connectDB();
     
