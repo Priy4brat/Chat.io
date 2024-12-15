@@ -10,7 +10,7 @@ import { app, server } from "./lib/socket.js";
 import path from "path";
 
 dotenv.config(); // it will load the .env file into the process.env object
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
 
 app.use(
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"))
+    res.sendFile(path.join(__dirname, "../Frontend","dist", "index.html"))
   });
 }
 
