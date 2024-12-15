@@ -19,7 +19,7 @@ function App() {
     checkAuth()
   }, [checkAuth])
 
-  console.log({authUser}); 
+  // console.log({authUser}); 
 
   if(isCheckingAuth && !authUser){ // if the user is checking the auth and the user is not authenticated
     return(
