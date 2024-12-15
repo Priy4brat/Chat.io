@@ -1,0 +1,12 @@
+{
+  "name": "chat.io",
+  "version": "1.0.0",
+  "description": "Chat.io is a modern messaging app for seamless, instant communication. Built with React, Node.js, and Socket.io, it features real-time messaging, secure user authentication, customizable profiles, and media sharing. Designed for speed and responsiveness, it's perfect for connecting with friends, family, or teams effortlessly!",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend ",
+    "start": "npm run start --prefix Backend"
+  },
+  "author": "",
+  "license": "ISC"
+}
