@@ -1,24 +1,38 @@
 # Chat.io
 
-Chat.io is a modern messaging app for seamless, instant communication. Built with React, Node.js, and Socket.io, it features real-time messaging, secure user authentication, customizable profiles, and media sharing. Designed for speed and responsiveness, it's perfect for connecting with friends, family, or teams effortlessly!
+Chat.io is a modern messaging app for seamless, instant communication. Built with React, Node.js, and Socket.io, it features real-time messaging, customizable profiles, and media sharing. Designed for speed and responsiveness, it's perfect for connecting with friends, family, or teams effortlessly!
+
+---
 
 ## Key Features
 
-- **Instant Messaging**: Exchange messages in real-time without any delay.
-- **User Authentication**: Secure login system to protect user data and conversations.
-- **Responsive Design**: Fully optimized for both desktop and mobile devices.
-- **Customizable Profiles**: Upload avatars and personalize user profiles.
-- **Emoji and Media Sharing**: Add a personal touch to your chats with emojis and media uploads.
-- **Secure Communication**: Messages are transmitted using secure protocols to ensure privacy.
+- **Instant Messaging**: Exchange messages in real-time without any delay.  
+- **Signup Using Email ID**: Easily create an account using your email.  
+- **Real-Time Messaging with Socket.io**: Live, bidirectional communication for an uninterrupted chat experience.  
+- **Online User Status**: See when users are online or offline.  
+- **Responsive Design**: Fully optimized for both desktop and mobile devices.  
+- **Customizable Profiles**: Upload avatars and personalize user profiles.  
+- **Emoji and Media Sharing**: Add a personal touch to your chats with emojis and media uploads.  
+- **Authentication & Authorization**: Secure login and access control using JWT.  
+- **Secure Communication**: Messages are transmitted using secure protocols to ensure privacy.  
 
-## Tech Stack
+---
 
-- **Frontend**: React.js with Tailwind CSS for a sleek and intuitive user interface.
-- **Backend**: Node.js/Express for scalable server-side logic.
-- **Database**: MongoDB for real-time data storage and retrieval.
-- **Real-Time Communication**: Socket.io for live, bidirectional communication between users.
+## 🌟 Tech Stack
+
+- **MERN**: MongoDB, Express.js, React.js, Node.js  
+- **Real-Time Communication**: Socket.io  
+- **UI Styling**: Tailwind CSS + Daisy UI  
+- **State Management**: Zustand  
+- **Authentication & Authorization**: JWT for secure access control  
+- **HTTP Requests**: Axios for making API calls from the frontend  
+
+---
 
 ## Installation and Setup
+
+Follow these steps to set up the project locally:
+
 
 1. **Clone the repository:**
    ```bash
@@ -28,22 +42,15 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
 
 2. **Install dependencies:**
    ```bash
-   npm install
+   npm run build
    ```
 
 3. **Start the development server:**
    ```bash
-   npm start
+   npm run start
    ```
 
-4. **Run the backend server:**
-   ```bash
-   cd backend
-   npm install
-   npm run dev
-   ```
-
-5. **Environment Variables:**
+4. **Environment Variables:**
    Create a `.env` file in the root directory and add the following variables:
    ```plaintext
    # MongoDB Configuration
@@ -51,13 +58,13 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
    MONGODB_PASS=<password>
 
    # Server Configuration
-   PORT=5002
+   PORT=5001
 
    # JWT Secret Key
    JWT_SECRET=mysecretkey
 
    # Environment Mode
-   NODE_ENV=development
+   NODE_ENV= development 
 
    # Cloudinary Configuration
    CLOUDINARY_CLOUD_NAME=your-cloud-name
@@ -67,7 +74,7 @@ Chat.io is a modern messaging app for seamless, instant communication. Built wit
 
 ## Usage
 
-- Open the app in your browser at `http://localhost:3000`.
+- Open the app in your browser at `http://localhost:5001`.
 - Sign up or log in to start chatting.
 - Customize your profile and enjoy real-time messaging!
 
