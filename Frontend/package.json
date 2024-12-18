@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vite": "^4.0.0",
     "axios": "^1.7.9",
     "chat.io": "file:..",
     "lucide-react": "^0.468.0",
